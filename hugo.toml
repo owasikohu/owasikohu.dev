@@ -1,0 +1,4 @@
+baseURL = 'https://owasikohu.dev/'
+languageCode = 'ja'
+title = 'owasikohu.dev'
+theme = 'owasikohu.dev'
