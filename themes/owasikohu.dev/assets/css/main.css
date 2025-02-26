@@ -34,7 +34,7 @@ header {
   text-decoration: none;
   font-size: 24px;
   margin-right: 40px;
-  color: blue;
+  color: #639dff;
 }
 
 .menu-item {
@@ -51,7 +51,7 @@ footer {
 }
 
 a {
-  color: #00e;
+  color: #639dff;
   text-decoration: none;
 }
 
