@@ -24,6 +24,8 @@ title = 'profile'
 
 [misskey.io](https://misskey.io/@owasikov)
 
+[pleroma.owasikohu.dev](https://pleroma.owasikohu.dev/users/owasikohu)
+
 [bluesky](https://bsky.app/profile/owasikohu.bsky.social)
 
 [reddit](https://www.reddit.com/user/owasikohu/)
