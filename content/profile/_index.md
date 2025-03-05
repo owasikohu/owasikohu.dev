@@ -18,7 +18,7 @@ title = 'profile'
 
 [twitter(X)](https://x.com/owasikohu)
 
-[twitter(X)](https://x.com/owasikov)
+[twitter(鍵)](https://x.com/owasikov)
 
 [github](https://github.com/owasikohu)
 
@@ -39,6 +39,8 @@ title = 'profile'
 [NesDev](https://forums.nesdev.org/memberlist.php?mode=viewprofile&u=35634)
 
 [Scratch](https://scratch.mit.edu/users/owatas/)
+
+[Qiita](https://qiita.com/owasikohu)
 
 Discord(main):owasikohu
 
