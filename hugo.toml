@@ -2,3 +2,7 @@ baseURL = 'https://owasikohu.dev/'
 languageCode = 'ja'
 title = 'owasikohu.dev'
 theme = 'owasikohu.dev'
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
