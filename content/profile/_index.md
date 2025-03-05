@@ -18,6 +18,8 @@ title = 'profile'
 
 [twitter(X)](https://x.com/owasikohu)
 
+[twitter(X)](https://x.com/owasikov)
+
 [github](https://github.com/owasikohu)
 
 [YouTube](https://www.youtube.com/@owasikohu)
