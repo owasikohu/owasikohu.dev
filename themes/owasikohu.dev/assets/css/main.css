@@ -31,10 +31,8 @@ header {
 
 
 .menu-item a{
-  text-decoration: none;
   font-size: 24px;
   margin-right: 40px;
-  color: #639dff;
 }
 
 .menu-item {
@@ -60,4 +58,8 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid #808080; 
   margin-top: 25px;
   padding-bottom: 10px;
+}
+
+ul, ol {
+  padding-left: 0; margin-left: 0; 
 }
