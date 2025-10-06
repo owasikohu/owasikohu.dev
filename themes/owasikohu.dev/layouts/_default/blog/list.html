@@ -1,0 +1,14 @@
+{{ define "main" }}
+  <h1 class="no-border">ブログ一覧</h1>
+  <br>
+    {{ range .Pages.ByDate.Reverse }}
+      <hr>
+        <article>
+          <time>{{ .Date.Format "2006-01-02" }}</time>
+          <br>
+          <h2 class="no-border"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+          <p>{{ truncate 70 .Summary }}</p>
+        </article>
+      <hr>
+    {{ end }}
+{{ end }}

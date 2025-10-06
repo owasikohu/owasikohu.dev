@@ -1,24 +1,24 @@
 +++
-title = 'profile'
+title = "profile"
+date = "2025-10-06"
+draft = false
 +++
+## 私について
 
-## About
+最近は高専生をやってます
 
-### owasikohu(オワシコフ)
+ラーメンがすきです
 
-様々なことに取り組んでいます。
+C/C++ Python JS/TSあたりを使ってます
 
-プログラミングはあまり得意ではありません:(
+最近は麻雀とか競技プログラミングにはまってます 精進していきたい...
 
-趣味:麻雀/PSP/ギャルゲ/ハードオフ/サーバー運営/世界史/シンセサイザー etc...
+CTFとかのサイバーセキュリティとかハードもやっていきます
 
-## Contact
+まぁ器用貧乏なんでどれも中途半端です
 
-なるべくたくさん集めました 連絡したいならDiscordやtwitterがおすすめ
-
+## 連絡
 [twitter(X)](https://x.com/owasikohu)
-
-[twitter(鍵)](https://x.com/owasikov)
 
 [github](https://github.com/owasikohu)
 
@@ -26,34 +26,10 @@ title = 'profile'
 
 [misskey.io](https://misskey.io/@owasikov)
 
-[pleroma.owasikohu.dev](https://pleroma.owasikohu.dev/users/owasikohu)
-
-[bluesky](https://bsky.app/profile/owasikohu.bsky.social)
-
 [reddit](https://www.reddit.com/user/owasikohu/)
 
 [Wikipedia(ja)](https://ja.wikipedia.org/wiki/%E5%88%A9%E7%94%A8%E8%80%85:Owaskohu)
 
-[hackerOne](https://hackerone.com/owasikohu?type=user)
-
-[NesDev](https://forums.nesdev.org/memberlist.php?mode=viewprofile&u=35634)
-
-[Scratch](https://scratch.mit.edu/users/owatas/)
-
 [Qiita](https://qiita.com/owasikohu)
 
 Discord(main):owasikohu
-
-Discord(sub):dmitry_owasikov
-
-Telegram: owasikohu
-
-### 連絡不可
-
-凍結されたものなど
-
-[owasikohu.com(misskey)](https://owasikohu.com/@owasikohu) 閉鎖済み
-
-[misskey.io](https://misskey.io/@owasikohu) ioの方針は自由で開かれるべき分散型SNSの思想に反しています。クソが
-
-Scratch:owasikohu/Yugoslavia_2022/owatas_sub etc... 他にも合計で20はあったはず、まぁ...凍結理由は私が悪いです。
