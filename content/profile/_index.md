@@ -28,7 +28,7 @@ CTFとかのサイバーセキュリティとかハードもやっていきま�
 
 [reddit](https://www.reddit.com/user/owasikohu/)
 
-[Wikipedia(ja)](https://ja.wikipedia.org/wiki/%E5%88%A9%E7%94%A8%E8%80%85:Owaskohu)
+[AtCoder](https://atcoder.jp/users/owasikohu)
 
 [Qiita](https://qiita.com/owasikohu)
 

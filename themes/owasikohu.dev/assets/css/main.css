@@ -1,14 +1,14 @@
 body {
   color: #ffffff;
   background-color: #222;
-  line-height: 1.5;
+  line-height: 1;
   margin: 20px;
 }
 
 @media (min-width: 768px) {
   body {
-    padding-right: 2.5%;
-    padding-left: 2.5%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
   }
 
 }
@@ -40,7 +40,10 @@ header {
   display: inline-block;
 }
 
-
+.pagination {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 footer {
   text-align: center;
   color: greenyellow;

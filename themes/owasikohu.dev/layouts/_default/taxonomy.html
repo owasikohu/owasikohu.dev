@@ -1,20 +1,5 @@
 {{ define "main" }}
-  <h2>タグ</h2>
-  {{ range $tag, $pages := site.Taxonomies.tags }}
-    <a href="/tags/{{$tag | urlize }}">
-      #{{ $tag }} ({{ len $pages }})
-    </a>
-  {{ end }}
-
-  <h2>カテゴリ</h2>
-  {{ range $cat, $pages := site.Taxonomies.categories }}
-    <a href="/categories/{{$cat | urlize }}">
-      {{ $cat }} ({{ len $pages }})
-    </a>
-  {{ end }}
-  <h2 class="no-border">記事一覧</h2>
-  <hr>
-
+  <h2>"{{ .Title }}" の記事一覧</h2>
   {{ $paginator := .Paginate (.Pages.ByDate.Reverse) 10 }}
   {{ range $paginator.Pages }}
     <hr>
@@ -32,28 +17,24 @@
       {{ end }}
     {{ end }}
 
-    <h2 class="no-border"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-    <p>{{ truncate 70 .Summary }}</p>
+    <h2 class="no-border"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <p>{{ .Summary }}</p>
     <hr>
   {{ end }}
-  <hr>
 
   <div class="pagination">
     {{ if $paginator.HasPrev }}
       <a href="{{ $paginator.Prev.URL }}"><< back</a>
     {{ end }}
-    &nbsp;
     {{ range $page := $paginator.Pagers }}
       {{ if eq $page $paginator }}
         <strong>[{{ $page.PageNumber }}]</strong>
       {{ else }}
-        <a href="{{ $page.URL }}">[{{ $page.PageNumber }}]</a>
+        <a href="{{ $page.URL }}">{{ $page.PageNumber }}</a>
       {{ end }}
     {{ end }}
-    &nbsp;
     {{ if $paginator.HasNext }}
       <a href="{{ $paginator.Next.URL }}">next >></a>
     {{ end }}
   </div>
-  <hr>
 {{ end }}
