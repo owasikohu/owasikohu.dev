@@ -21,3 +21,7 @@ draft = false
 <img src="https://nishi.boats/banner.gif" height="40" width="200">
 
 - [HTTPs](https://nishi.boats)
+
+### p.tikisan.xyz
+
+- [HTTPs](https://p.tikisan.xyz/)
