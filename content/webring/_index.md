@@ -13,7 +13,7 @@ draft = false
 
 <img src="https://owasikohu.dev/webring/owasikohu.dev.png" height="40" width="200">
 
-## ウェブリング
+## Links
 
 
 
@@ -23,5 +23,6 @@ draft = false
 - [HTTPs](https://nishi.boats)
 
 ### p.tikisan.xyz
+<img src="https://p.tikisan.xyz/favicon.ico" height="50" width="50">
 
 - [HTTPs](https://p.tikisan.xyz/)

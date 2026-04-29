@@ -5,17 +5,12 @@ draft = false
 +++
 ## 私について
 
-最近は高専生をやってます
-
 ラーメンがすきです
 
 C/C++ Python JS/TSあたりを使ってます
 
-最近は麻雀とか競技プログラミングにはまってます 精進していきたい...
+最近はCTFとかバグハントに力を入れてるよ
 
-CTFとかのサイバーセキュリティとかハードもやっていきます
-
-まぁ器用貧乏なんでどれも中途半端です
 
 ## 連絡
 [twitter(X)](https://x.com/owasikohu)
@@ -23,10 +18,6 @@ CTFとかのサイバーセキュリティとかハードもやっていきま�
 [github](https://github.com/owasikohu)
 
 [YouTube](https://www.youtube.com/@owasikohu)
-
-[misskey.io](https://misskey.io/@owasikov)
-
-[reddit](https://www.reddit.com/user/owasikohu/)
 
 [AtCoder](https://atcoder.jp/users/owasikohu)
 
