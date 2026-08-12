@@ -1,7 +1,9 @@
 baseURL = 'https://owasikohu.dev/'
 languageCode = 'ja'
+timeZone = 'Asia/Tokyo'
 title = 'owasikohu.dev'
 theme = 'owasikohu.dev'
+disableKinds = ['rss', 'taxonomy', 'term']
 
 [markup]
   [markup.goldmark]

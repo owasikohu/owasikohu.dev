@@ -6,6 +6,4 @@ draft = false
 
 私の作品を置いています
 
-- Faustでつくったボコーダー
-
-https://github.com/owasikohu/vocoder
+- [Faustでつくったボコーダー](https://github.com/owasikohu/vocoder)

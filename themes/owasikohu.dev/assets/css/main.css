@@ -1,7 +1,7 @@
 body {
   color: #ffffff;
   background-color: #222;
-  line-height: 1;
+  line-height: 1.6;
   margin: 20px;
 }
 
@@ -10,7 +10,6 @@ body {
     margin-right: 2.5%;
     margin-left: 2.5%;
   }
-
 }
 
 header {
@@ -18,32 +17,29 @@ header {
   margin-bottom: 50px;
 }
 
-.header-top {
-  display: flex;
-  justify-content: space-between;
+.header-logo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
-
 
 .site-menu {
   overflow-x: auto;
   white-space: nowrap;
 }
 
-
-.menu-item a{
-  font-size: 24px;
-  margin-right: 40px;
-}
-
-.menu-item {
+.menu-group {
+  display: flex;
+  gap: 2.5rem;
   list-style: none;
-  display: inline-block;
+  margin-left: 0;
+  padding-left: 0;
 }
 
-.pagination {
-  margin-top: 15px;
-  margin-bottom: 15px;
+.menu-item a {
+  font-size: 1.5rem;
 }
+
 footer {
   text-align: center;
   color: greenyellow;
@@ -56,19 +52,32 @@ a {
   text-decoration: none;
 }
 
+a:hover,
+a:focus-visible {
+  text-decoration: underline;
+}
 
-h1:not(.no-border),
-h2:not(.no-border),
-h3:not(.no-border),
-h4:not(.no-border),
-h5:not(.no-border),
-h6:not(.no-border) {
-  border-bottom: 1px solid #808080; 
+main {
+  overflow-wrap: anywhere;
+}
+
+main img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  border-bottom: 1px solid #808080;
   margin-top: 25px;
   padding-bottom: 10px;
 }
 
-
-ul, ol {
-  padding-left: 0; margin-left: 0; 
+main ul,
+main ol {
+  padding-inline-start: 1.5rem;
 }
