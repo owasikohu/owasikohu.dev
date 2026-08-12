@@ -1,6 +1,6 @@
 +++
 title = "home"
-date = "2025-10-06"
+date = "2026-08-13"
 draft = false
 +++
 

@@ -21,6 +21,6 @@ draft = false
 - [HTTPS](https://nishi.boats)
 
 ### p.tikisan.xyz
-<img src="https://p.tikisan.xyz/favicon.ico" height="50" width="50" alt="p.tikisan.xyzのアイコン" loading="lazy">
+<img src="p-tikisan.ico" height="50" width="50" alt="p.tikisan.xyzのアイコン" loading="lazy">
 
 - [HTTPS](https://p.tikisan.xyz/)
