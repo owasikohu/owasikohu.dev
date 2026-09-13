@@ -14,13 +14,6 @@
       {{ end }}
     </header>
 
-    {{ with .Params.hero }}
-      {{ with $.Resources.Get . }}
-        {{ $hero := .Fit "1280x720 webp q85" }}
-        <img class="blog-article__hero" src="{{ $hero.RelPermalink }}" width="{{ $hero.Width }}" height="{{ $hero.Height }}" alt="" data-pagefind-meta="image[src]">
-      {{ end }}
-    {{ end }}
-
     <div class="blog-article__content">
       {{ .Content }}
     </div>

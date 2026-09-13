@@ -19,16 +19,16 @@ const IMAGE_TIMEOUT_MS = 10_000;
 const RELAY_TIMEOUT_MS = 12_000;
 
 const EMOJI_BY_TAG = new Map([
-  ["nostr", "🛰️"],
-  ["test", "🧪"],
+  ["nostr", "📡"],
+  ["test", "📝"],
   ["ctf", "🚩"],
-  ["security", "🔐"],
+  ["security", "🔒"],
   ["web", "🌐"],
-  ["ai", "🧠"],
-  ["audio", "🎛️"],
+  ["ai", "💡"],
+  ["audio", "🎵"],
   ["programming", "💻"],
 ]);
-const EMOJI_PALETTE = ["🛰️", "🧪", "🛠️", "💾", "🌐", "⚡", "🎛️", "🧠", "📡", "🔐"];
+const EMOJI_PALETTE = ["📡", "📝", "🔧", "💾", "🌐", "⚡", "🎵", "💡", "🔒", "💻"];
 
 useWebSocketImplementation(WebSocket);
 

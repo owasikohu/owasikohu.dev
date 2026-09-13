@@ -166,12 +166,20 @@ main ol {
   transition: transform 160ms ease;
 }
 
+.article-card__visual picture {
+  display: block;
+  width: 100%;
+  height: 180px;
+}
+
 .article-card:hover .article-card__visual img {
   transform: scale(1.025);
 }
 
 .article-card__emoji {
   font-size: clamp(3.5rem, 9vw, 6rem);
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-variant-emoji: emoji;
   line-height: 1;
   filter: drop-shadow(0 0 20px rgb(99 157 255 / 28%));
 }
@@ -261,14 +269,6 @@ main ol {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-}
-
-.blog-article__hero {
-  width: 100%;
-  max-height: 460px;
-  margin-block: 1rem;
-  border-radius: 8px;
-  object-fit: cover;
 }
 
 .blog-article__content {
