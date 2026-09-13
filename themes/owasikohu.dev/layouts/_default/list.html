@@ -1,4 +1,6 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+  {{ if .Params.showTitle }}
+    <h1>{{ .Title }}</h1>
+  {{ end }}
   {{ .Content }}
 {{ end }}

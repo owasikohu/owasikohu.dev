@@ -1,7 +1,7 @@
 body {
   color: #ffffff;
   background-color: #222;
-  line-height: 1.6;
+  line-height: 1.4;
   margin: 20px;
 }
 
@@ -14,7 +14,7 @@ body {
 
 header {
   border-bottom: 1px solid #ffffff;
-  margin-bottom: 50px;
+  margin-bottom: 24px;
 }
 
 .header-logo img {
@@ -44,7 +44,7 @@ footer {
   text-align: center;
   color: greenyellow;
   border-top: 1px solid #ffffff;
-  margin-top: 50px;
+  margin-top: 24px;
 }
 
 a {
@@ -61,20 +61,20 @@ main {
   overflow-wrap: anywhere;
 }
 
+main p {
+  margin-block: 0.4em;
+}
+
 main img {
   max-width: 100%;
   height: auto;
 }
 
 h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h2 {
   border-bottom: 1px solid #808080;
-  margin-top: 25px;
-  padding-bottom: 10px;
+  margin-top: 20px;
+  padding-bottom: 6px;
 }
 
 main ul,
