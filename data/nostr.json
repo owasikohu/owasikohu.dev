@@ -3,6 +3,9 @@
   "relays": [
     "wss://relay.primal.net",
     "wss://relay.damus.io",
-    "wss://nostr.compile-error.net"
-  ]
+    "wss://nostr.compile-error.net",
+    "wss://relay-jp.nostr.wirednet.jp"
+  ],
+  "minimumSuccessfulRelays": 2,
+  "queryAttempts": 2
 }

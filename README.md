@@ -16,7 +16,7 @@ npm run build
 3. Hugoで古い生成物を掃除して `public/` を生成
 4. Pagefindで日本語検索インデックスを生成
 
-Nostrの公開鍵とリレーは `data/nostr.json` で設定します。秘密鍵（`nsec`）は使用しません。
+Nostrの公開鍵とリレーは `data/nostr.json` で設定します。各リレーを個別に複数回問い合わせ、設定した数以上のリレーから有効な記事を取得できない場合は、不完全なサイトを公開しないようビルドを停止します。秘密鍵（`nsec`）は使用しません。
 
 ## Cloudflare Pages
 

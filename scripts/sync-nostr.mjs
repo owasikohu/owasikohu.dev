@@ -163,17 +163,80 @@ export async function localizeMarkdownImages(content, articleDirectory, cache) {
   return content;
 }
 
-async function fetchArticles(config, authorHex) {
-  const pool = new SimplePool();
-  try {
-    return await pool.querySync(
-      config.relays,
-      { kinds: [30023], authors: [authorHex] },
-      { maxWait: RELAY_TIMEOUT_MS },
-    );
-  } finally {
-    pool.close(config.relays);
+function validArticlesFromRelay(events, authorHex) {
+  return events.filter(
+    (event) => event.kind === 30023
+      && event.pubkey === authorHex
+      && eventIdentifier(event)
+      && verifyEvent(event),
+  );
+}
+
+async function fetchArticlesFromRelay(relay, authorHex, attempts) {
+  const collected = new Map();
+  const errors = [];
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    const pool = new SimplePool();
+    try {
+      const events = await pool.querySync(
+        [relay],
+        { kinds: [30023], authors: [authorHex] },
+        { maxWait: RELAY_TIMEOUT_MS },
+      );
+      const validEvents = validArticlesFromRelay(events, authorHex);
+      for (const event of validEvents) collected.set(event.id, event);
+      console.log(`[nostr] ${relay} attempt ${attempt}: ${validEvents.length} valid article(s)`);
+    } catch (error) {
+      errors.push(error.message);
+      console.warn(`[nostr] ${relay} attempt ${attempt} failed: ${error.message}`);
+    } finally {
+      pool.close([relay]);
+    }
   }
+
+  if (collected.size === 0) {
+    const detail = errors.length > 0 ? ` (${errors.join("; ")})` : "";
+    throw new Error(`${relay} returned no valid articles${detail}`);
+  }
+
+  return [...collected.values()];
+}
+
+async function fetchArticles(config, authorHex) {
+  const attempts = Number.isSafeInteger(config.queryAttempts) && config.queryAttempts > 0
+    ? config.queryAttempts
+    : 2;
+  const minimumSuccessfulRelays = Number.isSafeInteger(config.minimumSuccessfulRelays)
+    ? config.minimumSuccessfulRelays
+    : Math.min(2, config.relays.length);
+
+  if (minimumSuccessfulRelays < 1 || minimumSuccessfulRelays > config.relays.length) {
+    throw new Error("minimumSuccessfulRelays must be between 1 and the number of relays");
+  }
+
+  const results = await Promise.allSettled(
+    config.relays.map((relay) => fetchArticlesFromRelay(relay, authorHex, attempts)),
+  );
+  const successful = results.filter((result) => result.status === "fulfilled");
+
+  results.forEach((result, index) => {
+    if (result.status === "rejected") console.warn(`[nostr] relay unavailable: ${config.relays[index]} (${result.reason.message})`);
+  });
+
+  if (successful.length < minimumSuccessfulRelays) {
+    throw new Error(
+      `only ${successful.length}/${config.relays.length} relays returned valid articles; `
+      + `${minimumSuccessfulRelays} required to prevent an incomplete deployment`,
+    );
+  }
+
+  const collected = new Map();
+  for (const result of successful) {
+    for (const event of result.value) collected.set(event.id, event);
+  }
+  console.log(`[nostr] merged ${collected.size} event(s) from ${successful.length}/${config.relays.length} relays`);
+  return [...collected.values()];
 }
 
 function latestAddressableEvents(events, authorHex) {
