@@ -1,0 +1,9 @@
+{{- $src := .Get "src" -}}
+{{- $resource := .Page.Resources.Get $src -}}
+<img
+  src="{{ with $resource }}{{ .RelPermalink }}{{ else }}{{ $src | safeURL }}{{ end }}"
+  {{ with .Get "width" }}width="{{ . }}"{{ end }}
+  {{ with .Get "height" }}height="{{ . }}"{{ end }}
+  alt="{{ .Get "alt" }}"
+  loading="lazy"
+>

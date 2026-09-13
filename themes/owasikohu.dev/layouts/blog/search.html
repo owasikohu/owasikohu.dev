@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <section id="blog-search" class="blog-search" data-pagefind-url="{{ "pagefind/pagefind.js" | relURL }}">
+    <form class="blog-search__form" role="search">
+      <div class="blog-search__controls">
+        <input id="blog-search-input" name="q" type="search" autocomplete="off" placeholder="タイトル、本文、タグ" aria-label="ブログを検索">
+        <button type="submit">検索</button>
+      </div>
+    </form>
+    <p id="blog-search-status" class="blog-search__status" role="status" aria-live="polite"></p>
+    <div id="blog-search-results" class="search-results"></div>
+  </section>
+
+  {{ partial "blog-search-script.html" . }}
+{{ end }}

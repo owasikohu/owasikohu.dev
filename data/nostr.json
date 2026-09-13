@@ -1,0 +1,8 @@
+{
+  "author": "npub18gyrqafsdf7kupq27jgh4ftx3a3vl8p0xs77mgcqy4ykgz4qr5ssg9uuka",
+  "relays": [
+    "wss://relay.primal.net",
+    "wss://relay.damus.io",
+    "wss://nostr.compile-error.net"
+  ]
+}

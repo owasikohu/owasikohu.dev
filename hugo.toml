@@ -3,9 +3,19 @@ languageCode = 'ja'
 timeZone = 'Asia/Tokyo'
 title = 'owasikohu.dev'
 theme = 'owasikohu.dev'
-disableKinds = ['rss', 'taxonomy', 'term']
+disableKinds = ['rss']
+capitalizeListTitles = false
+
+[taxonomies]
+  blog_tag = 'blog_tags'
+
+[permalinks]
+  [permalinks.taxonomy]
+    blog_tags = '/blog/tags/'
+  [permalinks.term]
+    blog_tags = '/blog/tags/:slug/'
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true
+      unsafe = false

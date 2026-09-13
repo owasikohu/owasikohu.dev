@@ -1,0 +1,66 @@
+{{ define "main" }}
+  <h1 class="visually-hidden">{{ .Title }}</h1>
+
+  <section id="blog-search" class="blog-search blog-search--top" data-pagefind-url="{{ "pagefind/pagefind.js" | relURL }}">
+    <form class="blog-search__form" role="search">
+      <div class="blog-search__controls">
+        <input id="blog-search-input" name="q" type="search" autocomplete="off" placeholder="タイトル、本文、タグ" aria-label="ブログを検索">
+        <button type="submit">検索</button>
+      </div>
+    </form>
+    <p id="blog-search-status" class="blog-search__status" role="status" aria-live="polite"></p>
+    <div id="blog-search-results" class="search-results"></div>
+  </section>
+
+  {{ $terms := site.Taxonomies.blog_tags.ByCount }}
+  <section class="blog-section" aria-labelledby="blog-tags-heading">
+    <div class="blog-heading">
+      <h2 id="blog-tags-heading">タグ</h2>
+      <a href="{{ "blog/tags/" | relURL }}">タグ一覧</a>
+    </div>
+    {{ if gt (len $terms) 10 }}
+      <ul class="tag-cloud">
+        {{ range first 10 $terms }}
+          <li><a href="{{ .Page.RelPermalink }}">#{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a></li>
+        {{ end }}
+      </ul>
+      <details class="tag-overflow">
+        <summary>残り{{ sub (len $terms) 10 }}件を表示</summary>
+        <ul class="tag-cloud">
+          {{ range after 10 $terms }}
+            <li><a href="{{ .Page.RelPermalink }}">#{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a></li>
+          {{ end }}
+        </ul>
+      </details>
+    {{ else }}
+      <ul class="tag-cloud">
+        {{ range $terms }}
+          <li><a href="{{ .Page.RelPermalink }}">#{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a></li>
+        {{ else }}
+          <li>タグはまだありません。</li>
+        {{ end }}
+      </ul>
+    {{ end }}
+  </section>
+
+  <section class="blog-section" aria-labelledby="blog-list-heading">
+    <div class="blog-heading">
+      <h2 id="blog-list-heading">ブログ一覧</h2>
+    </div>
+    {{ .Content }}
+
+    {{ $pages := .RegularPagesRecursive.ByDate.Reverse }}
+    {{ $paginator := .Paginate $pages 12 }}
+    {{ partial "article-grid.html" $paginator.Pages }}
+
+    {{ if gt $paginator.TotalPages 1 }}
+      <nav class="pagination" aria-label="ページ送り">
+        {{ with $paginator.Prev }}<a rel="prev" href="{{ .URL }}">← 新しい記事</a>{{ end }}
+        <span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+        {{ with $paginator.Next }}<a rel="next" href="{{ .URL }}">古い記事 →</a>{{ end }}
+      </nav>
+    {{ end }}
+  </section>
+
+  {{ partial "blog-search-script.html" . }}
+{{ end }}

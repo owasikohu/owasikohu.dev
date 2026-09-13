@@ -1,0 +1,21 @@
+{
+  "name": "owasikohu-dev",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "sync:nostr": "node scripts/sync-nostr.mjs",
+    "build:hugo": "hugo --minify --cleanDestinationDir",
+    "build:search": "pagefind --site public",
+    "build": "npm run sync:nostr && npm run build:hugo && npm run build:search"
+  },
+  "dependencies": {
+    "nostr-tools": "2.25.2",
+    "ws": "8.21.3"
+  },
+  "devDependencies": {
+    "pagefind": "1.5.2"
+  }
+}

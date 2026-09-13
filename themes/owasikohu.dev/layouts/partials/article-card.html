@@ -1,0 +1,26 @@
+{{- $page := . -}}
+<article class="article-card">
+  <a class="article-card__visual" href="{{ $page.RelPermalink }}" tabindex="-1" aria-hidden="true">
+    {{- with $page.Params.hero }}
+      {{- with $page.Resources.Get . }}
+        {{- $thumbnail := .Fit "640x360 webp q82" -}}
+        <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" alt="" loading="lazy">
+      {{- else }}
+        <span class="article-card__emoji">{{ $page.Params.thumbnail | default "🛰️" }}</span>
+      {{- end }}
+    {{- else }}
+      <span class="article-card__emoji">{{ $page.Params.thumbnail | default "🛰️" }}</span>
+    {{- end }}
+  </a>
+
+  <div class="article-card__body">
+    <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2006-01-02" }}</time>
+    <h2 class="article-card__title"><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h2>
+    {{ with $page.Params.summary }}<p class="article-card__summary">{{ . }}</p>{{ end }}
+    {{ with $page.GetTerms "blog_tags" }}
+      <ul class="tag-list" aria-label="タグ">
+        {{ range . }}<li><a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a></li>{{ end }}
+      </ul>
+    {{ end }}
+  </div>
+</article>

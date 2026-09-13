@@ -1,3 +1,8 @@
 public/
 resources/  
 .hugo_build.lock
+.codex/
+.agents/
+node_modules/
+content/blog/generated/
+content/blog/.generated-temp/

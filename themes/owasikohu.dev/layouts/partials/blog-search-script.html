@@ -1,0 +1,4 @@
+{{ with resources.Get "js/blog-search.js" }}
+  {{ $script := . | minify | fingerprint }}
+  <script type="module" src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
+{{ end }}

@@ -11,16 +11,16 @@ draft = false
 
 ### バナー
 
-<img src="owasikohu.dev.png" height="40" width="200" alt="owasikohu.devのバナー">
+{{< site-image src="owasikohu.dev.png" height="40" width="200" alt="owasikohu.devのバナー" >}}
 
-## Links
+## リンク
 
 ### nishi.boats
-<img src="nishiboats.png" width="88" height="31" alt="nishi.boatsのバナー" loading="lazy">
+{{< site-image src="nishiboats.png" width="88" height="31" alt="nishi.boatsのバナー" >}}
 
 - [HTTPS](https://nishi.boats)
 
 ### p.tikisan.xyz
-<img src="p-tikisan.ico" height="50" width="50" alt="p.tikisan.xyzのアイコン" loading="lazy">
+{{< site-image src="p-tikisan.ico" height="50" width="50" alt="p.tikisan.xyzのアイコン" >}}
 
 - [HTTPS](https://p.tikisan.xyz/)
