@@ -4,5 +4,4 @@ resources/
 .codex/
 .agents/
 node_modules/
-content/blog/generated/
 content/blog/.generated-temp/
