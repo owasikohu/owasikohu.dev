@@ -7,6 +7,7 @@
   },
   "scripts": {
     "sync:nostr": "node scripts/sync-nostr.mjs",
+    "monitor:nostr": "node scripts/sync-nostr.mjs --update-state",
     "build:hugo": "hugo --minify --cleanDestinationDir",
     "build:search": "pagefind --site public",
     "build": "npm run sync:nostr && npm run build:hugo && npm run build:search"

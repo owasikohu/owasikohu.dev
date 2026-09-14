@@ -11,6 +11,7 @@ import WebSocket from "ws";
 const SCRIPT_DIRECTORY = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = path.resolve(SCRIPT_DIRECTORY, "..");
 const CONFIG_PATH = path.join(PROJECT_ROOT, "data", "nostr.json");
+const STATE_PATH = path.join(PROJECT_ROOT, "data", "nostr-state.json");
 const BLOG_ROOT = path.join(PROJECT_ROOT, "content", "blog");
 const OUTPUT_DIRECTORY = path.join(BLOG_ROOT, "generated");
 const TEMP_DIRECTORY = path.join(BLOG_ROOT, ".generated-temp");
@@ -251,6 +252,63 @@ function latestAddressableEvents(events, authorHex) {
   return [...latest.values()].sort((a, b) => b.created_at - a.created_at);
 }
 
+async function readState(authorHex) {
+  let state;
+  try {
+    state = JSON.parse(await readFile(STATE_PATH, "utf8"));
+  } catch (error) {
+    if (error.code === "ENOENT") return null;
+    throw new Error(`could not read ${path.relative(PROJECT_ROOT, STATE_PATH)}: ${error.message}`);
+  }
+
+  if (state.version !== 1 || state.author !== authorHex || !Array.isArray(state.articles)) {
+    throw new Error(`${path.relative(PROJECT_ROOT, STATE_PATH)} is invalid or belongs to another author`);
+  }
+  for (const article of state.articles) {
+    if (!article
+      || typeof article.identifier !== "string"
+      || typeof article.event_id !== "string"
+      || !Number.isSafeInteger(article.created_at)) {
+      throw new Error(`${path.relative(PROJECT_ROOT, STATE_PATH)} contains an invalid article`);
+    }
+  }
+  return state;
+}
+
+function assertStateCoverage(articles, state) {
+  if (!state) return;
+
+  const current = new Map(articles.map((article) => [eventIdentifier(article), article]));
+  const missing = state.articles.filter((expected) => {
+    const article = current.get(expected.identifier);
+    if (!article) return true;
+    if (article.created_at > expected.created_at) return false;
+    return article.created_at !== expected.created_at || article.id !== expected.event_id;
+  });
+
+  if (missing.length > 0) {
+    const identifiers = missing.map((article) => article.identifier).join(", ");
+    throw new Error(
+      `relay results are missing ${missing.length} monitored article(s): ${identifiers}; keeping the current deployment`,
+    );
+  }
+}
+
+async function writeState(articles, authorHex) {
+  const state = {
+    version: 1,
+    author: authorHex,
+    articles: articles
+      .map((article) => ({
+        identifier: eventIdentifier(article),
+        event_id: article.id,
+        created_at: article.created_at,
+      }))
+      .sort((a, b) => a.identifier.localeCompare(b.identifier, "en")),
+  };
+  await writeFile(STATE_PATH, `${JSON.stringify(state, null, 2)}\n`, "utf8");
+}
+
 async function writeArticle(event, config, authorHex, usedSlugs) {
   const identifier = eventIdentifier(event);
   const slug = stableSlug(identifier);
@@ -288,6 +346,7 @@ async function writeArticle(event, config, authorHex, usedSlugs) {
     nostr_event_id: event.id,
     nostr_identifier: identifier,
     nostr_uri: `nostr:${naddr}`,
+    nostr_url: `https://primal.net/a/${naddr}`,
     generated_from_nostr: true,
     draft: false,
   };
@@ -309,6 +368,8 @@ async function main() {
   const events = await fetchArticles(config, decoded.data);
   const articles = latestAddressableEvents(events, decoded.data);
   if (articles.length === 0) throw new Error("no valid NIP-23 articles were returned; keeping the current deployment");
+  const state = await readState(decoded.data);
+  assertStateCoverage(articles, state);
 
   await rm(TEMP_DIRECTORY, { recursive: true, force: true });
   await mkdir(TEMP_DIRECTORY, { recursive: true });
@@ -317,6 +378,10 @@ async function main() {
 
   await rm(OUTPUT_DIRECTORY, { recursive: true, force: true });
   await rename(TEMP_DIRECTORY, OUTPUT_DIRECTORY);
+  if (process.argv.includes("--update-state")) {
+    await writeState(articles, decoded.data);
+    console.log(`[nostr] updated ${path.relative(PROJECT_ROOT, STATE_PATH)}`);
+  }
   console.log(`[nostr] generated ${articles.length} article${articles.length === 1 ? "" : "s"} from ${config.relays.length} relays`);
 }
 

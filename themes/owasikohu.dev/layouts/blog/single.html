@@ -19,7 +19,7 @@
     </div>
 
     <footer class="blog-article__source" data-pagefind-ignore>
-      {{ with .Params.nostr_uri }}<a href="{{ . | safeURL }}">Nostrで開く</a>{{ end }}
+      {{ with .Params.nostr_url }}<a href="{{ . }}" rel="external">Nostrで開く</a>{{ end }}
     </footer>
   </article>
 {{ end }}

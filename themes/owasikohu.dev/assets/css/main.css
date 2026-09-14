@@ -107,13 +107,15 @@ main ol {
   margin-top: 1.5rem;
 }
 
-.blog-section > .blog-heading {
+.blog-section > .blog-heading,
+.blog-heading--ruled {
   width: 100%;
   border-bottom: 1px solid #ffffff;
   padding-bottom: 6px;
 }
 
-.blog-section > .blog-heading h2 {
+.blog-section > .blog-heading h2,
+.blog-heading--ruled h1 {
   border-bottom: 0;
   padding-bottom: 0;
 }

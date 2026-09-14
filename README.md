@@ -27,4 +27,8 @@ Nostrの公開鍵とリレーは `data/nostr.json` で設定します。各リ�
 | Node.js | `.node-version` の値を使用 |
 | `HUGO_VERSION` | `0.147.7` |
 
-Nostrへの投稿だけではGitビルドが始まらないため、必要に応じてCloudflare PagesのDeploy Hookで再ビルドします。
+## Nostr記事の自動更新
+
+GitHub Actionsの `Update Nostr blog` が毎時17分にリレーを確認します。署名検証済みの記事IDに変化があった場合だけ `data/nostr-state.json` を自動コミットし、そのGit更新によってCloudflare Pagesのビルドを開始します。Actions画面の `Run workflow` から手動実行もできます。
+
+監視済みの記事がリレーの応答から欠けた場合は状態を更新せず、Cloudflareの既存デプロイを維持します。同期に秘密鍵（`nsec`）やCloudflareのAPIトークンは必要ありません。

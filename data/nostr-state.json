@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "author": "3a083075306a7d6e040af4917aa5668f62cf9c2f343deda3002549640aa01d21",
+  "articles": [
+    {
+      "identifier": "nostr",
+      "event_id": "9e612c96b0d6c9d6746a6201f67b030adb26adb9c178f121bdfd3bd384f17b66",
+      "created_at": 1789273242
+    },
+    {
+      "identifier": "nostrheadless-cms",
+      "event_id": "eaa8f94aeb41c0417db1355110a933b5581d8cd9f9d3e961b3d004f513e47e9b",
+      "created_at": 1789310451
+    }
+  ]
+}
